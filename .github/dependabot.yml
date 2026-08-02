@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      # Keep the design system pair moving together, since
+      # designsystem-react declares design-system as a peer dependency.
+      scottish-government-design-system:
+        patterns:
+          - "@scottish-government/*"
+    ignore:
+      # Reviewed manually. See README.md "How to upgrade the design
+      # system" before bumping either of these.
+      - dependency-name: "@scottish-government/design-system"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@scottish-government/designsystem-react"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"

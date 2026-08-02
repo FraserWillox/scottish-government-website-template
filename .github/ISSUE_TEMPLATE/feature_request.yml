@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest an improvement to the template
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a starter template used by many different services, not a
+        product in its own right. Suggestions that improve it as a general
+        starting point are welcome; features only useful to one specific
+        service are usually better kept in that service's own fork.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: What is missing, awkward, or wrong today?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
