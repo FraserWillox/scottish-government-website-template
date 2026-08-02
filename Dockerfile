@@ -2,14 +2,14 @@
 
 # ---- deps -------------------------------------------------------------
 # Installs dependencies with a reproducible, locked install.
-FROM node:22-alpine AS deps
+FROM node:25-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
 # ---- builder ------------------------------------------------------------
 # Builds the production (standalone) Next.js output.
-FROM node:22-alpine AS builder
+FROM node:25-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -19,7 +19,7 @@ RUN npm run build
 # ---- runner ---------------------------------------------------------------
 # Minimal, non-root runtime image. Only the standalone server output, static
 # assets and public files are copied in. No source, no dev dependencies.
-FROM node:22-alpine AS runner
+FROM node:25-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
