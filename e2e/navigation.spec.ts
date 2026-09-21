@@ -148,7 +148,7 @@ test.describe("Site navigation", () => {
     expect(await link.textContent()).not.toMatch(/opens in new tab/i);
   });
 
-  test("shows a Beta phase banner with a working feedback link", async ({
+  test("shows a Beta phase banner with a feedback link to the GitHub Issues page", async ({
     page,
   }) => {
     await page.goto("/");
@@ -158,8 +158,11 @@ test.describe("Site navigation", () => {
     await expect(banner.getByText("Beta")).toBeVisible();
 
     const feedbackLink = banner.getByRole("link", { name: "feedback" });
-    await expect(feedbackLink).toHaveAttribute("href", "/about#contact");
-    await feedbackLink.click();
-    await expect(page).toHaveURL(/\/about#contact$/);
+    await expect(feedbackLink).toHaveAttribute(
+      "href",
+      "https://github.com/FraserWillox/scottish-government-website-template/issues",
+    );
+    await expect(feedbackLink).toHaveAttribute("target", "_blank");
+    await expect(feedbackLink).toHaveAttribute("rel", "noopener noreferrer");
   });
 });

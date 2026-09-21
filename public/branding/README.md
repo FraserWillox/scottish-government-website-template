@@ -17,18 +17,25 @@ That source is a live Scottish Government digital service used here only
 as a reference for asset sourcing and visual treatment. This template does
 not copy its content, business logic, or branding text.
 
-## Licensing: read this before reusing these files elsewhere
+## Why these assets are included, and what that does not mean
 
-These are Crown copyright graphic assets, **not** covered by this
-template's own [proprietary source-code licence](../../LICENSE). The MIT
-licence on `@scottish-government/design-system` and
+This template is specifically intended for use by authorised Scottish
+Government projects, which is why the real Scottish Government branding is
+bundled here rather than an abstract placeholder. Including these assets
+in this open-source repository does **not** transfer ownership of them to
+this template, to Fraser Willox, or to anyone who uses this template: they
+remain Crown copyright, **not** covered by this template's own
+[Apache-2.0 source-code licence](../../LICENSE). The MIT licence on
+`@scottish-government/design-system` and
 `@scottish-government/designsystem-react` (see [NOTICE.md](../../NOTICE.md))
 covers their *code*; it does not by itself grant a licence to reuse the
 Scottish Government logo, the "saltire" mark, or the Open Government
 Licence logo outside a genuine Scottish Government context.
 
-Before using this template, including these bundled assets, for a real,
-publicly branded service:
+Teams adopting this template remain responsible for confirming that their
+own service is authorised to use Scottish Government branding before they
+publish it. Before using this template, including these bundled assets,
+for a real, publicly branded service:
 
 1. Confirm with your organisation's design, communications or legal team
    that your intended use of the Scottish Government logo and Crown
@@ -38,8 +45,17 @@ publicly branded service:
 3. If your service is not itself an official Scottish Government service,
    do not present these assets in a way that implies it is one.
 
+Organisations or projects that are not entitled to use Scottish Government
+branding must replace these assets with their own organisation's approved
+branding (see [Where these are wired up](#where-these-are-wired-up) below)
+before using this template.
+
+This template is independently created by Fraser Willox and is not
+maintained or endorsed by the Scottish Government Design System team
+merely because it depends on their design system.
+
 See also [`NOTICE.md`](../../NOTICE.md) in the repository root, which
-distinguishes this template's own proprietary source code from the MIT
+distinguishes this template's own Apache-2.0 source code from the MIT
 licences of its third-party dependencies and from Crown copyright branding.
 
 ## Where these are wired up

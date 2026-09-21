@@ -32,4 +32,17 @@ describe("AboutPage", () => {
       screen.getByRole("link", { name: "Design System documentation" }),
     ).toHaveAttribute("href", siteConfig.links.designSystemDocs);
   });
+
+  it("credits Fraser Willox and describes the template as open source", () => {
+    render(<AboutPage />);
+    expect(screen.getByText(/Fraser Willox/)).toBeInTheDocument();
+    expect(screen.getByText(/open-source starter template/i)).toBeInTheDocument();
+  });
+
+  it("links the contact section to the feedback destination", () => {
+    render(<AboutPage />);
+    expect(
+      screen.getByRole("link", { name: /GitHub repository/ }),
+    ).toHaveAttribute("href", siteConfig.phase.feedbackUrl);
+  });
 });

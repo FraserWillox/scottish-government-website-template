@@ -11,7 +11,7 @@ export default function HomePage() {
       <PageHeader title={siteConfig.name} />
 
       <p className="ds_lead">
-        This proprietary starter template provides a foundation for teams
+        This open-source starter template provides a foundation for teams
         building Scottish Government websites and services with Next.js
         and the Scottish Government Design System. The template itself is
         not an official, published Scottish Government service.

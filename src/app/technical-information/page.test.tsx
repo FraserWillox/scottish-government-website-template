@@ -28,7 +28,7 @@ describe("TechnicalInformationPage", () => {
     render(<TechnicalInformationPage />);
     expect(screen.getByText("Next.js (App Router)")).toBeInTheDocument();
     expect(
-      screen.getAllByText("Scottish Government Design System React 1.1.0")
+      screen.getAllByText("Scottish Government Design System React 1.2.1")
         .length,
     ).toBeGreaterThan(0);
   });

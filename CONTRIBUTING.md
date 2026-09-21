@@ -2,14 +2,12 @@
 
 Thanks for your interest in improving this template.
 
-This repository is currently private and proprietary (see
-[LICENSE](LICENSE) and [NOTICE.md](NOTICE.md)). Contributions are accepted
-only through the repository owner's review process: opening a pull request
-does not create any licence or right to use the template, and accepting a
-contribution does not change the repository's proprietary status unless
-agreed separately in writing. By submitting a contribution, you confirm
-that you have the right to submit it (for example, it is your own original
-work, or you otherwise have the necessary rights and permissions).
+This repository is open source, licensed under the
+[Apache License, Version 2.0](LICENSE) (see also [NOTICE.md](NOTICE.md)).
+By submitting a contribution, you confirm that you have the right to
+submit it (for example, it is your own original work, or you otherwise
+have the necessary rights and permissions), and you agree that your
+contribution is made under the repository's Apache-2.0 licence.
 
 ## Before you start
 
@@ -26,25 +24,17 @@ branding, service-specific content, business logic) belong in that
 service's own fork, not here. If you're unsure whether something fits,
 open an issue first to discuss it.
 
-## Development setup
+## How to contribute
 
-```bash
-git clone <your fork>
-cd scottish-government-website-template
-npm install
-npm run dev
-```
-
-See [README.md](README.md) for the full list of prerequisites and scripts.
-
-## Before opening a pull request
-
-Run the full check locally:
-
-```bash
-npm run check      # lint, typecheck, unit tests, build
-npm run test:e2e   # Playwright, including accessibility scans
-```
+1. Fork the repository, or create a branch if you have write access.
+2. Make focused changes: keep pull requests to one change at a time.
+3. Add or update tests for what you changed.
+4. Run the full check locally:
+   ```bash
+   npm run check      # lint, typecheck, unit tests, build
+   npm run test:e2e   # Playwright, including accessibility scans
+   ```
+5. Open a pull request describing what changed and why.
 
 Please also:
 
@@ -53,12 +43,6 @@ Please also:
 - Avoid adding new runtime dependencies unless there's a clear need
 - Keep example content fictional, neutral and clearly labelled as an
   example, not real policy, guidance, or branding
-
-## Commit and PR style
-
-- Keep pull requests focused on one change
-- Write commit messages that explain *why*, not just *what*
-- Fill in the pull request template's checklist
 
 ## Design system changes
 

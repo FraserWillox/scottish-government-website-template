@@ -17,7 +17,8 @@ export default NextLinkAdapter;
 
 /**
  * SiteNavigation.Item, ContentsNav.Item and SideNavigation.Item accept an
- * `isCurrent` prop, but in 1.1.0 they only apply the resulting
+ * `isCurrent` prop, but in the installed version (currently 1.2.1) they
+ * only apply the resulting
  * `aria-current="page"` to their own internal fallback <a>, not to
  * whatever `linkComponent` renders, and none of them spread extra props
  * either, so there is no other way to pass it through. This adapter sets

@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  // Belt-and-braces alongside robots.ts: whenever indexing is disabled
+  // (siteConfig.allowIndexing, i.e. NEXT_PUBLIC_ALLOW_INDEXING=false) this
+  // also sets a page-level noindex, since a robots.txt disallow rule
+  // alone doesn't stop an already-linked page being indexed. See
+  // deploy/cpanel/README.md for how Fraser Willox's own cPanel demo build
+  // sets this.
+  ...(!siteConfig.allowIndexing ? { robots: { index: false, follow: false } } : {}),
 };
 
 export default function RootLayout({

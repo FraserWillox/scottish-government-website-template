@@ -14,11 +14,24 @@ const securityHeaders = [
   { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
 ];
 
+// Set by `npm run build:cpanel` only (see package.json and
+// deploy/cpanel/README.md). Produces a static export for the
+// sg-template.fraserwillox.com cPanel deployment, which has no Node.js
+// runtime. Plain `npm run build`/`npm run start` and the Docker image are
+// unaffected: they keep using the standalone server build below.
+const isCpanelExport = process.env.DEPLOY_TARGET === "cpanel";
+
 const nextConfig: NextConfig = {
-  // Produces a self-contained server build (.next/standalone) for the
+  // Standalone: a self-contained server build (.next/standalone) for the
   // Docker image, instead of requiring a full node_modules install in the
   // runtime container. See Dockerfile.
-  output: "standalone",
+  // Export (cPanel only): a fully static `out/` directory with no server,
+  // for shared/static hosting. See deploy/cpanel/README.md.
+  output: isCpanelExport ? "export" : "standalone",
+  ...(isCpanelExport ? { trailingSlash: true } : {}),
+  // No basePath: the cPanel export is hosted at the root of its own
+  // subdomain (sg-template.fraserwillox.com), and the standalone build is
+  // also served from its host's root.
 
   // Removes the "X-Powered-By: Next.js" response header.
   poweredByHeader: false,
@@ -38,14 +51,22 @@ const nextConfig: NextConfig = {
     "@scottish-government/design-system",
   ],
 
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: securityHeaders,
-      },
-    ];
-  },
+  // `headers()` is not supported with `output: "export"` (Next.js fails
+  // the build if it's present) — the cPanel export relies on
+  // deploy/cpanel/.htaccess for an equivalent Apache baseline instead.
+  // The standalone/Docker build keeps applying these via Next itself.
+  ...(isCpanelExport
+    ? {}
+    : {
+        async headers() {
+          return [
+            {
+              source: "/:path*",
+              headers: securityHeaders,
+            },
+          ];
+        },
+      }),
 };
 
 export default nextConfig;

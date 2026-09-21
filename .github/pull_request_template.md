@@ -8,4 +8,4 @@
 - [ ] `npm run test:e2e` passes locally
 - [ ] I have tested this change with a keyboard, not just a mouse
 - [ ] I have updated relevant documentation (README, code comments)
-- [ ] This change does not introduce EPC-specific, service-specific, or otherwise non-reusable content into the template
+- [ ] This change does not introduce service-specific content, branding, or business logic that only belongs in one adopting project

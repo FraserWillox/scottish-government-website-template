@@ -1,6 +1,6 @@
 # Client-boundary design system wrappers
 
-`@scottish-government/designsystem-react` 1.1.0 does not mark any of its
+`@scottish-government/designsystem-react` (currently 1.2.1) does not mark any of its
 files with a `"use client"` directive. Most components are plain functions
 with no React state and render fine inside server components, but a subset
 use hooks (`useState`, `useEffect`, `useRef`, `useId`, `useContext`) to

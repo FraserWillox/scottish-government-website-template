@@ -27,13 +27,14 @@ the team running that service, not this repository.
 ## Known, monitored advisories
 
 Running `npm audit` against this project currently reports advisories in
-transitive dependencies of `eslint` (via `minimatch`/`brace-expansion`, a
-devDependency-only, build-time chain) and internal dependencies of `next`
-itself (`postcss`, `sharp`). None of these are reachable from application
-runtime code, and `npm audit fix --force` would downgrade `next` to an
-unrelated, years-old release rather than fix them. Do not run it blindly.
-Re-run `npm audit` after upgrading `next`/`eslint` and re-assess before
-treating this list as current.
+transitive, devDependency-only, build-time dependencies of `eslint` and
+`vitest` (`brace-expansion`, `js-yaml`, `nanoid`, `@vitest/mocker`). None
+of these are reachable from application runtime code: they only run
+during linting, type generation and the test suite, never in the built
+application. Fixing them currently requires a major upgrade of `eslint`
+or `vitest`, so `npm audit fix --force` is not run automatically. Re-run
+`npm audit` periodically and re-assess before treating this list as
+current.
 
 ## Supported versions
 

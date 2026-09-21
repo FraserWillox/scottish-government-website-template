@@ -8,7 +8,7 @@ const techStack: Array<{ title: string; detail: string }> = [
   { title: "Language", detail: "TypeScript (strict mode)" },
   {
     title: "Design system",
-    detail: "Scottish Government Design System React 1.1.0",
+    detail: "Scottish Government Design System React 1.2.1",
   },
   {
     title: "Automated testing",

@@ -25,9 +25,9 @@ describe("HomePage", () => {
     ).toHaveAttribute("href", "/technical-information");
   });
 
-  it("does not describe the template as publicly reusable", () => {
+  it("describes the template as open source", () => {
     const { container } = render(<HomePage />);
     const text = container.textContent ?? "";
-    expect(text).not.toMatch(/open[\s-]source/i);
+    expect(text).toMatch(/open[\s-]source/i);
   });
 });

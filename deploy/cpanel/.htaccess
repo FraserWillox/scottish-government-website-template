@@ -1,0 +1,39 @@
+# Scottish Government website template — cPanel static export
+#
+# Baseline Apache configuration for the sg-template.fraserwillox.com static
+# review deployment (see ../README.md). Copied to out/.htaccess by
+# scripts/build-cpanel.mjs as part of `npm run build:cpanel`. Mirrors
+# next.config.ts's security headers where an Apache equivalent exists; the
+# standalone/Docker build keeps applying those via Next itself.
+
+# Redirect HTTP to HTTPS.
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Next.js's client-side link-prefetching requests each page's static
+# segment payload as a flattened, dot-separated filename (for example
+# /about/__next.about.__PAGE__.txt), but `next build` with
+# `output: "export"` writes it nested (out/about/__next.about/__PAGE__.txt).
+# Without this rewrite those background prefetch requests 404 on every
+# page load; Next falls back to a full navigation either way, so it's not
+# a broken experience, but this keeps prefetching working and the console
+# clean. See ../README.md.
+RewriteRule ^(.*/)__next\.(.+)\.__PAGE__\.txt$ /$1__next.$2/__PAGE__.txt [L]
+
+# Directory index and 404 handling.
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# Disable directory listing.
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  # frame-ancestors only: unlike a full CSP, this does not restrict
+  # script-src/style-src/img-src, so it will not break Next.js's built
+  # static assets or client-side hydration.
+  Header always set Content-Security-Policy "frame-ancestors 'self'"
+</IfModule>

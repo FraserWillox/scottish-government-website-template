@@ -33,13 +33,14 @@ export default function AboutPage() {
 
       <h2>Purpose</h2>
       <p>
-        {siteConfig.name} gives teams building a new Scottish Government
-        website or digital service a working, accessible baseline: a
-        Next.js application already wired up to the Scottish Government
-        Design System, with the testing, accessibility checks and
-        deployment scaffolding a real project needs, so teams can spend
-        their time on their own service instead of re-solving the same
-        integration problems.
+        {siteConfig.name} was created by Fraser Willox as an independently
+        created, open-source starter template. It gives teams building a
+        new Scottish Government website or digital service a working,
+        accessible baseline: a Next.js application already wired up to the
+        official Scottish Government Design System, with the testing,
+        accessibility checks and deployment scaffolding a real project
+        needs, so teams can spend their time on their own service instead
+        of re-solving the same integration problems.
       </p>
 
       <h2>Who it is for</h2>
@@ -91,9 +92,15 @@ export default function AboutPage() {
       <p>
         To report an issue with this template itself (a bug, an
         accessibility problem in the starter pages, or a broken
-        integration), open an issue in this repository once it has a public
-        home, or contact whoever maintains your organisation&rsquo;s copy of
-        it.
+        integration), open an issue on{" "}
+        <a
+          href={siteConfig.phase.feedbackUrl}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          this template&rsquo;s GitHub repository
+        </a>
+        , or contact whoever maintains your organisation&rsquo;s copy of it.
       </p>
       <p>
         For support with Scottish Government Design System components
@@ -115,11 +122,14 @@ export default function AboutPage() {
 
       <h2>Branding and licensing caution</h2>
       <p>
-        The Open Government Licence covers the wording used in this
-        template&rsquo;s footer. The Scottish Government and Open Government
-        Licence logos stored in <code>public/branding/</code> are Crown
-        copyright, not covered by this template&rsquo;s own proprietary
-        source licence. See <code>NOTICE.md</code> and{" "}
+        This template&rsquo;s own source code is Apache-2.0 licensed and
+        open source (see <code>LICENSE</code>). The Open Government Licence
+        covers the wording used in this template&rsquo;s footer. The
+        Scottish Government and Open Government Licence logos stored in{" "}
+        <code>public/branding/</code> are Crown copyright, not covered by
+        this template&rsquo;s own Apache-2.0 source licence, and are
+        included because this starter is intended for authorised Scottish
+        Government projects. See <code>NOTICE.md</code> and{" "}
         <code>public/branding/README.md</code> before reusing them outside a
         genuine Scottish Government context.
       </p>

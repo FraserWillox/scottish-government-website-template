@@ -9,11 +9,13 @@ describe("SitePhaseBanner", () => {
     expect(screen.getByText("Beta")).toBeInTheDocument();
   });
 
-  it("renders feedback text with a link to a valid destination", () => {
+  it("renders feedback text with a link to the feedback destination, opening in a new tab", () => {
     render(<SitePhaseBanner />);
 
     const link = screen.getByRole("link", { name: siteConfig.phase.feedbackText });
     expect(link).toHaveAttribute("href", siteConfig.phase.feedbackUrl);
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
     expect(screen.getByText(/This is a starter template/)).toBeInTheDocument();
   });
 });

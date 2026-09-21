@@ -3,9 +3,10 @@
 import { usePathname } from "next/navigation";
 import SiteHeader from "@scottish-government/designsystem-react/dist/components/SiteHeader";
 // SiteNavigation is not re-exported from the package's public "components"
-// barrel in 1.1.0 (it is only referenced internally by SiteHeader's types),
-// so it is imported from its narrowest stable path instead. See README.md
-// "Design system integration decisions" for details.
+// barrel in the installed version (currently 1.2.1; it is only referenced
+// internally by SiteHeader's types), so it is imported from its narrowest
+// stable path instead. See README.md "Design system integration
+// decisions" for details.
 import SiteNavigation from "@scottish-government/designsystem-react/dist/components/SiteNavigation";
 
 import { primaryNavigation } from "@/config/navigation";

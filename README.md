@@ -4,51 +4,66 @@ A starter template for building Scottish Government websites and digital
 services with Next.js, React, TypeScript and the
 [Scottish Government Design System](https://designsystem.gov.scot/).
 
-**Author:** Fraser Willox, Director, Dream Tech Ltd
+**Created and maintained by:** Fraser Willox, Director, Dream Tech Ltd
 
-> **This repository is proprietary.** See
-> [Licence and permitted use](#0-licence-and-permitted-use) below before
-> using, copying or adapting anything in it.
+**Live demo:** <https://sg-template.fraserwillox.com>
 
 > **This is not an official Scottish Government service.** It is a
 > reusable, deliberately minimal starting point for teams building one.
 > Nothing in this repository represents real government policy, guidance,
 > or content. The header/footer branding **is** the official Scottish
 > Government branding (bundled locally; see
-> [`public/branding/README.md`](public/branding/README.md)), which is why
-> you must review [NOTICE.md](NOTICE.md) before adapting this template for
-> anything other than a genuine Scottish Government service. See also the
-> About page in the running app.
+> [`public/branding/README.md`](public/branding/README.md)), included
+> because this starter is intended for authorised Scottish Government
+> projects. See [NOTICE.md](NOTICE.md) before adapting this template for
+> anything other than a genuine, authorised Scottish Government service.
+> See also the About page in the running app.
 >
 > Use of this repository, including the bundled Scottish Government
 > branding, does not imply endorsement by, or affiliation with, the
 > Scottish Government.
 
-## 0. Licence and permitted use
+This template is **open source**, licensed under the
+[Apache License, Version 2.0](LICENSE). See
+[Licence and branding notice](#licence-and-branding-notice) below for how
+that licence relates to the Scottish Government Design System's own MIT
+licence and to the bundled Crown copyright branding, which are not the
+same thing.
 
-This repository is currently **proprietary and all rights are reserved**.
-See [LICENSE](LICENSE) for the full terms. In summary:
+## Quick start
 
-- Having access to this repository does not, by itself, grant you
-  permission to copy, use, modify or redistribute it.
-- Permission to use this template may be granted separately, in writing,
-  by the copyright holder.
-- A future public or source-available release of this template may use
-  different terms; nothing here should be read as a commitment to a
-  particular future licence.
-- The Scottish Government branding and other third-party assets bundled in
-  this repository have their own, separate terms: see
-  [NOTICE.md](NOTICE.md) and
-  [`public/branding/README.md`](public/branding/README.md).
-- This repository is **not an official Scottish Government service**, and
-  use of it does not imply endorsement by the Scottish Government.
+```bash
+git clone https://github.com/FraserWillox/scottish-government-website-template.git
+cd scottish-government-website-template
+npm install
+npm run dev
+```
 
-Any future permission to use this template may require projects based on
-it to retain an acknowledgement in their source repository or technical
-documentation. No acknowledgement would be required in the public-facing
-service interface unless separately agreed. This describes a possible
-future licence condition only, and does not currently grant permission to
-use the template.
+Then open <http://localhost:3000>. From there:
+
+1. Update [`src/config/site.ts`](src/config/site.ts) with your service's
+   name, description and links.
+2. Update [`src/config/navigation.ts`](src/config/navigation.ts) with your
+   primary navigation.
+3. Replace the example content in [`src/app/`](src/app/) with your own
+   pages.
+4. Run `npm run check` (lint, typecheck, unit tests, build) before you
+   commit.
+
+You can also use this repository as a
+[GitHub template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
+("Use this template" on GitHub) instead of cloning it directly.
+
+## Where engineers customise this starter
+
+| Location | Purpose |
+| --- | --- |
+| `src/config/site.ts` | Public, non-secret site configuration: name, description, phase banner wording, feedback destination, external links, branding asset paths, indexing. **Never commit secrets, API keys or credentials here**, or to any other source-controlled file: use `.env.local` instead. |
+| `src/config/navigation.ts` | Primary header navigation and footer policy links |
+| `src/app/` | Routes and page content (Home, Technical information, About, error/loading states) |
+| `public/branding/` | Branding assets. See the licensing caution in [`public/branding/README.md`](public/branding/README.md) before reusing or replacing them |
+| `.env.example` | Documents available environment variables; copy to `.env.local` for local overrides (git-ignored) |
+| `next.config.ts` | Deployment output mode, response headers, and other Next.js configuration |
 
 ## 1. Overview
 
@@ -83,8 +98,8 @@ It is maintained as a starting point for teams building one. In particular:
   [Pages included](#3-pages-included) below.
 - The header, footer and favicon use the **official Scottish Government
   branding**, bundled locally under `public/branding/`. That branding is
-  Crown copyright and is **not** covered by this template's own source
-  licence. See [`NOTICE.md`](NOTICE.md) and
+  Crown copyright and is **not** covered by this template's own Apache-2.0
+  source licence. See [`NOTICE.md`](NOTICE.md) and
   [`public/branding/README.md`](public/branding/README.md) before reusing
   it outside a genuine Scottish Government context.
 
@@ -97,8 +112,8 @@ It is maintained as a starting point for teams building one. In particular:
 | `/about` | Purpose, what to replace, contact and support |
 | `/api/health` | JSON health check for container orchestrators |
 
-Plus `not-found`, `error`, `global-error` and `loading` states, and a Beta
-`PhaseBanner` shown on every page.
+Plus `not-found`, `error`, `global-error` and `loading` states, a Beta
+`PhaseBanner` shown on every page, and a `robots.txt` route.
 
 The footer's three policy links (Accessibility statement, Privacy notice,
 Cookies) are ordinary external links to the corresponding gov.scot
@@ -110,8 +125,8 @@ not local pages. See `src/config/navigation.ts`.
 - [Next.js](https://nextjs.org/) (App Router, standalone output)
 - [React](https://react.dev/) 19
 - [TypeScript](https://www.typescriptlang.org/) (strict)
-- [`@scottish-government/designsystem-react`](https://www.npmjs.com/package/@scottish-government/designsystem-react) 1.1.0
-- [`@scottish-government/design-system`](https://www.npmjs.com/package/@scottish-government/design-system) 4.1.1
+- [`@scottish-government/designsystem-react`](https://www.npmjs.com/package/@scottish-government/designsystem-react) 1.2.1
+- [`@scottish-government/design-system`](https://www.npmjs.com/package/@scottish-government/design-system) 4.2.0
 - [Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/react)
 - [Playwright](https://playwright.dev/) + [`@axe-core/playwright`](https://www.npmjs.com/package/@axe-core/playwright)
 - [ESLint](https://eslint.org/) (`eslint-config-next`)
@@ -132,10 +147,13 @@ CSS in `src/app/globals.css`.
 ## 6. Installation
 
 ```bash
-git clone <this-repository-url>
+git clone https://github.com/FraserWillox/scottish-government-website-template.git
 cd scottish-government-website-template
 npm install
 ```
+
+Use `npm ci` instead of `npm install` in CI or any environment where you
+want an exact, reproducible install from `package-lock.json`.
 
 PowerShell (Windows) is equivalent throughout: the commands above and
 below work unchanged in `pwsh`/`powershell.exe`.
@@ -154,6 +172,7 @@ Then open <http://localhost:3000>.
 | --- | --- |
 | `npm run dev` | Start the development server |
 | `npm run build` | Production build (standalone output) |
+| `npm run build:cpanel` | Optional static export used for Fraser Willox's own cPanel demo deployment (see [§21](#21-optional-cpanel-static-demo-deployment)); not the recommended way to deploy a real service, and does not replace `npm run build` |
 | `npm run start` | Start the production server from a build (see note below) |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `tsc --noEmit` |
@@ -225,7 +244,12 @@ npm run start
 
 `next.config.ts` sets `output: "standalone"`, `poweredByHeader: false`,
 `reactStrictMode: true`, and a set of security response headers (see
-[Security headers](#18-security-headerscsp-guidance) below).
+[Security headers](#18-security-headerscsp-guidance) below). This is the
+recommended, fully supported deployment model for a real Scottish
+Government service built from this template. The optional cPanel/static
+export described in [§21](#21-optional-cpanel-static-demo-deployment) is a
+separate, secondary deployment path used only for Fraser Willox's own
+demonstration site.
 
 ## 12. Docker usage
 
@@ -245,21 +269,24 @@ dev dependencies), and defines a `HEALTHCHECK` against `/api/health`.
 ## 13. Environment variables
 
 See [`.env.example`](.env.example). Copy it to `.env.local` for local
-overrides (git-ignored). Currently the only variable is:
+overrides (git-ignored). Currently the available variables are:
 
 | Variable | Purpose | Default |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Absolute site URL, used to build absolute metadata URLs | `http://localhost:3000` |
+| `NEXT_PUBLIC_SITE_URL` | Absolute site URL, used to build absolute metadata URLs and `robots.txt` | `http://localhost:3000` |
+| `NEXT_PUBLIC_ALLOW_INDEXING` | Set to `false` to disable search engine indexing (`robots.txt` disallow plus a page-level `noindex`). Defaults to allowing indexing | `true` |
 
 The app runs correctly with no environment variables set at all: there
-are no required secrets.
+are no required secrets. **Never commit secrets, API keys or tokens** into
+`.env.local`-tracked files, `src/config/site.ts`, or any other
+source-controlled file.
 
 ## 14. Project structure
 
 ```
 src/
   app/                        Routes (App Router): /, /technical-information,
-                               /about, /api/health, error/loading states
+                               /about, /api/health, robots.ts, error/loading states
   components/
     layout/                   Site chrome: header, footer, phase banner, skip link, page wrapper
     navigation/                next/link adapter for design-system linkComponent props
@@ -274,15 +301,17 @@ src/
   lib/                         Small framework-agnostic helpers
 e2e/                           Playwright specs
 public/branding/                Locally stored Scottish Government branding assets
+deploy/cpanel/                  Optional static demo deployment (see §21)
+scripts/                        Build scripts (currently just the cPanel export)
 ```
 
 ## 15. How to customise branding, content, metadata and navigation
 
 - **Public, non-secret site values:** `src/config/site.ts` (site name,
-  description, phase banner wording, external links, local branding asset
-  paths). This file is for public values only: never add credentials,
-  API keys, tokens or other secrets to it, or to any other
-  source-controlled file
+  description, phase banner wording, feedback destination, external
+  links, indexing, local branding asset paths). This file is for public
+  values only: never add credentials, API keys, tokens or other secrets
+  to it, or to any other source-controlled file
 - **Primary and footer navigation:** `src/config/navigation.ts`
 - **Page content:** edit the Home, Technical information and About pages
   under `src/app/`
@@ -296,6 +325,10 @@ public/branding/                Locally stored Scottish Government branding asse
   [`public/branding/README.md`](public/branding/README.md) for what is
   bundled, its source, and the licensing caution that applies before you
   reuse or replace it
+- **Feedback destination:** `siteConfig.phase.feedbackUrl` in
+  `src/config/site.ts` defaults to this template's own GitHub Issues page.
+  Replace it with your own project's issue tracker, support mailbox or
+  feedback service
 - **Deployment and response headers:** `next.config.ts` (see
   [Security headers](#18-security-headerscsp-guidance) below)
 - **Metadata:** each page exports its own `metadata` object (Next.js
@@ -326,7 +359,9 @@ public/branding/                Locally stored Scottish Government branding asse
 - Build with `output: "standalone"` and run `node .next/standalone/server.js`
   (see the Dockerfile) rather than `next start` in production.
 - Set `NEXT_PUBLIC_SITE_URL` to your real deployed origin so metadata URLs
-  resolve correctly.
+  and `robots.txt` resolve correctly.
+- `NEXT_PUBLIC_ALLOW_INDEXING` defaults to allowing indexing; set it to
+  `false` for a staging/review deployment that shouldn't be crawled.
 - The `/api/health` route is suitable for a load balancer or container
   orchestrator health/readiness probe.
 - This template does not include authentication, a database, or session
@@ -362,27 +397,49 @@ actually needs to allow.
 ## 19. Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) and the
-[Code of Conduct](CODE_OF_CONDUCT.md).
+[Code of Conduct](CODE_OF_CONDUCT.md). Report security issues privately;
+see [SECURITY.md](SECURITY.md).
 
 ## 20. Licence and branding notice
 
-This template's own source code is proprietary; see
-[Licence and permitted use](#0-licence-and-permitted-use) above and
-[LICENSE](LICENSE) for the full terms. It depends on the Scottish
+This template's own source code is open source, licensed under the
+[Apache License, Version 2.0](LICENSE). It depends on the Scottish
 Government Design System packages, which are separately MIT licensed under
-Crown Copyright. **Neither that dependency's licence, nor access to this
-repository, grants rights to Scottish Government branding or the Scottish
+Crown Copyright. **Neither that dependency's licence, nor this template's
+own licence, grants rights to Scottish Government branding or the Scottish
 Government logo.** See [NOTICE.md](NOTICE.md) for the full breakdown and
 [`public/branding/README.md`](public/branding/README.md) for what to do
 before using this template for a real, publicly branded service.
+
+## 21. Optional cPanel static demo deployment
+
+Alongside the standalone/Docker deployment above, which is the
+recommended way to deploy a real Scottish Government service built from
+this template, a separate static export is used for Fraser Willox's own
+demonstration deployment at
+[sg-template.fraserwillox.com](https://sg-template.fraserwillox.com), for
+shared/static hosting with no Node.js runtime:
+
+```bash
+npm run build:cpanel
+```
+
+This is an **optional, secondary deployment path**, not a recommendation
+for how to deploy a real service. It does not replace `npm run build`:
+it's a separate script that builds a static `out/` directory, uploaded to
+cPanel by hand, and it explicitly disables search engine indexing (see
+[Environment variables](#13-environment-variables)). See
+[`deploy/cpanel/README.md`](deploy/cpanel/README.md) for the full upload
+and redeployment steps, and [`deploy/cpanel/.htaccess`](deploy/cpanel/.htaccess)
+for the Apache configuration that ships with it.
 
 ---
 
 ## Design system integration decisions
 
-A few things about `@scottish-government/designsystem-react` 1.1.0 that
-aren't obvious from its type declarations alone, discovered while building
-this template, and worth knowing before you extend it:
+A few things about `@scottish-government/designsystem-react` that aren't
+obvious from its type declarations alone, discovered while building this
+template, and worth knowing before you extend it:
 
 - **`SiteNavigation` is not exported from the package's public
   `components` barrel**, even though `SiteHeader`'s own types reference

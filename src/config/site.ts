@@ -15,23 +15,33 @@ export const siteConfig = {
   name: "Scottish Government website template",
   shortName: "Website template",
   description:
-    "A proprietary Next.js starter template for building Scottish Government websites and digital services with the Scottish Government Design System.",
+    "An open-source Next.js starter template for building Scottish Government websites and digital services with the Scottish Government Design System.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   organisation: "The Scottish Government",
+
+  /**
+   * Whether pages may be indexed by search engines. Defaults to allowing
+   * indexing, which is what a real deployed service normally wants. Set
+   * `NEXT_PUBLIC_ALLOW_INDEXING=false` at build time to disable it, for
+   * example for a staging/review deployment. `npm run build:cpanel` sets
+   * this explicitly for Fraser Willox's own cPanel demo build; it is not
+   * implied merely by using a static export or any other deployment
+   * target. See `src/app/robots.ts` and the `robots` metadata in
+   * `src/app/layout.tsx`, both of which read this value.
+   */
+  allowIndexing: process.env.NEXT_PUBLIC_ALLOW_INDEXING !== "false",
 
   /** Wording and destination for the shared Beta phase banner. */
   phase: {
     name: "Beta",
     feedbackText: "feedback",
     /**
-     * This repository currently has no Git remote configured, so there is
-     * no GitHub repository URL to derive a /issues link from, so this
-     * points at the About page's contact section instead. If you push
-     * this repository to GitHub, change this to
-     * `https://github.com/<org>/<repo>/issues` and update the About page
-     * contact section to match.
+     * Points at this template's own GitHub Issues page. Teams adopting
+     * this starter for their own service should replace this with the
+     * feedback destination (issue tracker, support mailbox, feedback
+     * form) appropriate to their own project.
      */
-    feedbackUrl: "/about#contact",
+    feedbackUrl: "https://github.com/FraserWillox/scottish-government-website-template/issues",
   },
 
   /** External destinations referenced from the header, footer and pages. */
